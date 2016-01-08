@@ -35,14 +35,15 @@
 #include "usb_device.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "usbd_hid.h"             
+extern USBD_HandleTypeDef hUsbDeviceFS;
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+uint8_t buffer[8];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -86,7 +87,94 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-
+///////////////////////HelloWorld////////////////////////////		
+		buffer[2] = 0x0B;//h
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+/////////////////////////////////////////////////////////////
+		buffer[2] = 0x08;//e
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x0F;//l
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x0F;//l
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x12;//o
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x2C;//space
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x1A;//w
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);	
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x12;//o
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);		
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x15;//r
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x0F;//l
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		buffer[2] = 0x00;
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x07;//d
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(40);
+		for(uint8_t i=0;i <= 7;i++){
+		buffer[i] = 0x00;
+		}//
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
+////////////////////////////////////////////////////////////
+		buffer[2] = 0x28;//enter
+		USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(500);//!important
+		for(uint8_t i=0;i <= 7;i++){
+		buffer[i] = 0x00;
+		}		
+USBD_HID_SendReport(&hUsbDeviceFS, buffer, 8);
+		HAL_Delay(1000);
   /* USER CODE BEGIN 3 */
 
   }
